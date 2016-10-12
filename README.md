@@ -1,6 +1,6 @@
 # Commerce Currency Rates
 
-This is an example plugin that enable currency rates to be updated from the fixer.io api.
+This is an example plugin that enables commerce currency rates to be updated with live rates from the fixer.io api.
 
 ## Installation & Setup
 
