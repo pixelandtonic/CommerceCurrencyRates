@@ -20,7 +20,7 @@ return [
 ```
 http://yourdomain.dev/actions/currencyRates/update/rates?code=123
 ```
-6. Notice the `code=123`? replace with your unique password you populated in step 4.
+6. Notice the `code=123`. Replace `123` with the unique password that you populated in step 4.
 7. Set the cron to hit that url periodically. The example below is a cron command which hits the url every 24 hours at midnight:
 
 ```
