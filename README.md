@@ -33,3 +33,11 @@ http://yourdomain.dev/actions/currencyRates/update/rates?code=123
 
 You can manually visit the url to test the rates are updated correctly before setting up your cron job.
 
+## Data Source
+
+The plugin uses the http://fixer.io/ api for the live rates.
+
+Fixer.io is a free JSON API for current and historical foreign exchange rates published by the European Central Bank.
+
+The rates are updated daily around 4PM CET.
+
