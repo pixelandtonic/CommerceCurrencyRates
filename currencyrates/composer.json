@@ -1,0 +1,14 @@
+{
+	"name": "pixelandtonic/currencyrates",
+	"description": "Commerce Payment Currency Rates Updater",
+	"type": "craft-plugin",
+	"authors": [
+		{
+			"name": "Luke Holder",
+			"homepage": "http://craftcommerce.com"
+		}
+	],
+	"require": {
+		"composer/installers": "~1.0"
+	}
+}

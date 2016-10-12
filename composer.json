@@ -1,0 +1,8 @@
+{
+    "config": {
+        "vendor-dir": "currencyrates/vendor"
+    },
+    "require": {
+        "fadion/fixerio": "^1.1"
+    }
+}
