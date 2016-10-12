@@ -14,6 +14,8 @@
 namespace Craft;
 
 use Fadion\Fixerio\Exchange;
+use Fadion\Fixerio\Exceptions\ConnectionException;
+use Fadion\Fixerio\Exceptions\ResponseException;
 
 require __DIR__.'/../vendor/autoload.php';
 
@@ -35,9 +37,22 @@ class CurrencyRates_UpdateController extends BaseController
         $paymentCurrencies = craft()->commerce_paymentCurrencies->getAllPaymentCurrencies();
         $primaryCurrency = craft()->commerce_paymentCurrencies->getPrimaryPaymentCurrency();
 
-        $exchange = new Exchange();
-        $exchange->base($primaryCurrency->alphabeticCode);
-        $rates = $exchange->get();
+
+        try {
+            $exchange = new Exchange();
+            $exchange->base($primaryCurrency->alphabeticCode);
+            $rates = $exchange->get();
+        }
+        catch (ConnectionException $e) {
+            $error = "Fixer.io Connection Error: ".$e->getMessage();
+            CurrencyRatesPlugin::log($error,LogLevel::Error,true);
+            craft()->end();
+        }
+        catch (ResponseException $e) {
+            $error = "Fixer.io Response Error: ".$e->getMessage();
+            CurrencyRatesPlugin::log($error,LogLevel::Error,true);
+            craft()->end();
+        }
 
         foreach ($paymentCurrencies as $currency)
         {
@@ -53,7 +68,7 @@ class CurrencyRates_UpdateController extends BaseController
             }
         }
 
-        echo "Rates updated";
+        echo "Rates Updated.";
         craft()->end();
     }
 }
