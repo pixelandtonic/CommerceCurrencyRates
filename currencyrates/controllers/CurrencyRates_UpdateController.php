@@ -43,10 +43,17 @@ class CurrencyRates_UpdateController extends BaseController
         {
             if (!$currency->primary)
             {
-                $value = $rates[$currency->getAlphabeticCode()];
-                $currency->rate = $value;
-                craft()->commerce_paymentCurrencies->savePaymentCurrency($currency);
+                if (isset($rates[$currency->getAlphabeticCode()]))
+                {
+                    $value = $rates[$currency->getAlphabeticCode()];
+                    $currency->rate = $value;
+                    craft()->commerce_paymentCurrencies->savePaymentCurrency($currency);
+                }
+
             }
         }
+
+        echo "Rates updated";
+        craft()->end();
     }
 }
